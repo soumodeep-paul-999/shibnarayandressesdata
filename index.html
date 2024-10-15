@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shib Narayan Dresses Data Entry Form</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: darkblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+        .main{
+            background-color: white;
+            height: 80vh;
+            width: 80vw;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 20px 4px grey;
+        }
+        .form-design{
+            display: block;
+        }
+        .form-design label{
+            font-size: 20px;
+            margin: 5%;
+            font-weight: 700;
+        }
+        .form-design select{
+            width: 90%;
+            margin: 5px 5%;
+            height: 5vh;
+            border-radius: 20px;
+            padding: 0 0.5rem;
+        }
+        .form-design input{
+            width: 90%;
+            margin: 5px 5%;
+            height: 5vh;
+            border-radius: 20px;
+            padding: 0 15px;
+        }
+        .form-design button{
+            width: 90%;
+            height: 6vh;
+            border-radius: 20px;
+            margin: 5px 5%;
+            background-color: rgb(21, 206, 21);
+            border: none;
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .form-design button:hover{
+            background-color: green;
+        }
+        .form-design .reset{
+            background-color: red;
+        }
+        .form-design .reset:hover{
+            background-color: rgb(181, 0, 0);
+        }
+        .main h2{
+            border-bottom: 2px solid black;
+            border: none;
+            padding: 13px 0;
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>Data Entry Form</h2>
+        <form method="post" id="form">
+            <div class="form-design">
+                <div id="res" style="color: green;margin-left: 5%;font-weight: 800;"></div>
+                <label>Company Name</label>
+                <select name="companyname">
+                    <option>Unknown</option>
+                    <option>M.Nasim</option>
+                    <option>Lipi</option>
+                    <option>Housefull</option>
+                    <option>Well King</option>
+                    <option>Neel Kamal</option>
+                </select>
+            </div>
+            <div class="form-design">
+                <label>Product</label>
+                <select name="product">
+                    <option>Shirt</option>
+                    <option>Pant</option>
+                    <option>Kurti</option>
+                    <option>T-Shirt</option>
+                    <option>Frock</option>
+                    <option>Others</option>
+                </select>
+            </div>
+            <div class="form-design">
+                <label>Size</label>
+                <input type="number" name="size">
+            </div>
+            <div class="form-design">
+                <label>Price</label>
+                <input type="number" name="price">
+            </div>
+            <div class="form-design">
+                <label>Quantity</label>
+                <input type="number" name="quantity">
+            </div>
+            <div class="form-design">
+                <label>Date & Time</label>
+                <input type="datetime-local" name="datetime">
+            </div>
+            <div class="form-design">
+                <button name="btn">Submit</button>
+            </div>
+            <!-- <div class="form-design">
+                <button class="reset">Reset</button>
+            </div> -->
+        </form>
+    </div>
+</body>
+<script>
+    let url='https://script.google.com/macros/s/AKfycbwJDwy3nKbABHqnPps_l71EWQpDBoLwKpWCzEywKI5v2a7l2p0lTvvdNSfAmx9a-Q7h/exec'
+    let form=document.querySelector('#form');
+    form.addEventListener("submit",(e)=>{
+        e.target.btn.innerHTML="Submitting....";
+        let d=new FormData(form);
+        fetch(url,{
+            method:"POST",
+            body:d
+        }).then((res)=>res.text())
+        .then((finalRes)=>{
+            e.target.btn.innerHTML="Submit";
+            document.getElementById("res").innerHTML=finalRes;
+            console.log(finalRes);
+            form.reset();
+            setTimeout(()=>{
+                document.getElementById("res").innerHTML='';
+            },5000)
+        })
+        e.preventDefault();
+    })
+</script>
+
+</html>
