@@ -20,7 +20,7 @@
         }
         .main{
             background-color: white;
-            height: 80vh;
+            height: 90vh;
             width: 80vw;
             align-items: center;
             justify-content: center;
@@ -109,8 +109,12 @@
                 <input type="number" name="size" placeholder="Enter Size">
             </div>
             <div class="form-design">
-                <label>Price</label>
-                <input type="number" name="price" placeholder="Enter Price">
+                <label>Buying Price</label>
+                <input type="number" name="buyingprice" placeholder="Enter Price">
+            </div>
+            <div class="form-design">
+                <label>Selling Price</label>
+                <input type="number" name="sellingprice" placeholder="Enter Price">
             </div>
             <div class="form-design">
                 <label>Quantity</label>
@@ -118,7 +122,7 @@
             </div>
             <div class="form-design">
                 <label>Date & Time</label>
-                <input type="datetime-local" name="datetime">
+                <input type="datetime-local" name="datetime" placeholder="Enter Date And Time">
             </div>
             <div class="form-design">
                 <button name="btn">Submit</button>
@@ -130,7 +134,7 @@
     </div>
 </body>
 <script>
-    let url='https://script.google.com/macros/s/AKfycbwJDwy3nKbABHqnPps_l71EWQpDBoLwKpWCzEywKI5v2a7l2p0lTvvdNSfAmx9a-Q7h/exec'
+    let url='https://script.google.com/macros/s/AKfycbzSsSrAHtKN_mKuN7KH6Qye3eTOt_6MOeT_YUNM7AcL0dtswlRGZ0Bhbtc0cX0EYReI/exec'
     let form=document.querySelector('#form');
     form.addEventListener("submit",(e)=>{
         e.target.btn.innerHTML="Submitting....";
